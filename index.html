@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Weather & Forecast</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="./style.css" rel="stylesheet" />
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div id="bg"></div>
+
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">Weather & Forecast</div>
+      <form id="searchForm" class="search" autocomplete="off">
+        <input id="q" type="text" placeholder="Search city (e.g., Mango, Jharkhand)" aria-label="City" />
+        <button type="submit">Search</button>
+        <button id="useLoc" type="button" class="ghost">Use Current Location</button>
+      </form>
+    </header>
+
+    <div class="grid">
+      <section class="card" aria-live="polite">
+        <div class="location">
+          <h2 id="loc">—</h2>
+          <div id="time" class="subtle">—</div>
+        </div>
+        <div class="current">
+          <div class="big" id="temp">--°C</div>
+          <div>
+            <div class="cond">
+              <span id="icon" class="icon">—</span>
+              <span id="summary">—</span>
+            </div>
+            <div class="chips" id="chips"></div>
+          </div>
+        </div>
+        <div class="facts" id="facts"></div>
+        <div class="status" id="status"></div>
+      </section>
+
+      <section class="card">
+        <h3 class="h3">5‑Day Forecast</h3>
+        <div class="forecast" id="forecast"></div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

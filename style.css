@@ -1,0 +1,100 @@
+:root{
+  --bg0:#09101e;
+  --bg1:#0b1220;
+  --panel:#121a2b;
+  --muted:#9fb0c3;
+  --text:#e7eef7;
+  --accent:#4da3ff;
+  --ok:#2ecc71;
+  --warn:#f1c40f;
+  --bad:#e74c3c;
+  --chip:#1a2540;
+  --border:#22304d;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  color:var(--text);
+  background: linear-gradient(180deg, var(--bg0), var(--bg1) 20%, var(--bg1) 100%);
+  overflow-x:hidden;
+}
+
+/* Weather background overlay */
+#bg{
+  position:fixed; inset:0;
+  background-size:cover; background-position:center;
+  filter:brightness(0.8) saturate(1.1);
+  opacity:0.25; pointer-events:none;
+}
+
+/* Themed backgrounds by condition */
+body[data-theme="clear"] #bg{ background-image: radial-gradient(1200px 600px at 50% -10%, #1b3c74, #0b1220 60%); }
+body[data-theme="clouds"] #bg{ background-image: radial-gradient(1200px 600px at 50% -10%, #2a3a55, #0b1220 60%); }
+body[data-theme="rain"] #bg{ background-image: radial-gradient(1200px 600px at 50% -10%, #1d334a, #0b1220 60%); }
+body[data-theme="thunder"] #bg{ background-image: radial-gradient(1200px 600px at 50% -10%, #232b48, #0b1220 60%); }
+body[data-theme="snow"] #bg{ background-image: radial-gradient(1200px 600px at 50% -10%, #1e2b44, #0b1220 60%); }
+body[data-theme="fog"] #bg{ background-image: radial-gradient(1200px 600px at 50% -10%, #223149, #0b1220 60%); }
+
+.wrap{ max-width:1100px; margin:0 auto; padding:24px; position:relative; }
+.topbar{
+  display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+}
+.brand{ font-weight:600; letter-spacing:.2px; opacity:.9; }
+
+.search{
+  display:flex; gap:8px; width:100%; max-width:720px;
+  background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:8px;
+}
+.search input{
+  flex:1; background:transparent; border:none; color:var(--text); outline:none; font-size:16px;
+}
+.search button{
+  background:var(--accent); color:#08101c; border:none; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600;
+}
+.search .ghost{
+  background:transparent; color:var(--text); border:1px solid var(--border);
+}
+
+.grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:16px; margin-top:16px; }
+@media (max-width:900px){ .grid{ grid-template-columns:1fr; } }
+
+.card{
+  background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.02);
+}
+.location{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.location h2{ margin:0; font-size:22px; font-weight:650; }
+.subtle{ color:var(--muted); font-size:14px; }
+
+.current{ display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center; margin-top:10px; }
+.big{ font-size:56px; font-weight:700; line-height:1; letter-spacing:-1px; }
+.icon{ font-size:22px; margin-right:6px; }
+.cond{ display:flex; gap:12px; align-items:center; color:var(--muted); font-size:16px; padding-top:4px; }
+
+.chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.chip{ background:var(--chip); border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:13px; color:var(--muted); }
+
+.facts{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-top:14px; }
+@media (max-width:600px){ .facts{ grid-template-columns:1fr; } }
+.fact{
+  background:#0f182a; border:1px solid var(--border); border-radius:12px; padding:10px 12px; color:var(--muted);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.fact b{ color:var(--text); font-weight:650; }
+
+.h3{ margin:0 0 10px 0; }
+.forecast{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+@media (max-width:900px){ .forecast{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:600px){ .forecast{ grid-template-columns:repeat(2,1fr); } }
+.day{
+  background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:12px;
+  display:grid; gap:8px; text-align:center;
+}
+.day .d{ color:var(--muted); font-size:14px; }
+.day .i{ font-size:24px; }
+.day .t{ font-size:16px; font-weight:650; }
+.status{ margin-top:6px; font-size:13px; color:var(--muted); min-height:18px; }
+.error{ color:var(--bad); }
+.ok{ color:var(--ok); }
